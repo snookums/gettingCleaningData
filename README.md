@@ -45,7 +45,7 @@ hdrfile <- "./UCI HAR Dataset/features.txt"
 
 15) extract only the mean() and std() data columns from this data (keeping the 'subject' and 'activity' columns too)
 
-16) repeat steps 2-14 for 'train' data
+16) repeat steps 2-15 for 'train' data (changing the files in steps 2-4)
 
 16) combine the trimmed 'test' and 'train' datasets into 1 big data set (10299 rows)
 
