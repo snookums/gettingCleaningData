@@ -55,7 +55,8 @@ NOTE: need to double-up backslash char to use as escape chars (take char as lite
 
 z1 <- select(zdat, subject, activity, grep("mean\\(\\)|std\\(\\)", names(zdat)))
 
- names(z1)
+< names(z1)
+
  [1] "subject"                     "activity"                    "tBodyAcc-mean()-X"          
  [4] "tBodyAcc-mean()-Y"           "tBodyAcc-mean()-Z"           "tBodyAcc-std()-X"           
  [7] "tBodyAcc-std()-Y"            "tBodyAcc-std()-Z"            "tGravityAcc-mean()-X"       
