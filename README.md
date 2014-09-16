@@ -9,7 +9,7 @@ Here, the UCI HAR Dataset will be unzipped and installed.
 The run_analysis.R script will also be located and run from here.
 
 R script algorithm
-
+--------------------
 1) set the working directory
 
 2) read in test data (has no header info)
