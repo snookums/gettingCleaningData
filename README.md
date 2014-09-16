@@ -1,8 +1,3 @@
-gettingCleaningData
-===================
-
-course tidy data project files
-
 This file explains the run_analysis.R script used to generate the desired tidy data set
 
 To run the script, a user must have or create a specific directory structure at this location:
@@ -14,9 +9,8 @@ Here, the UCI HAR Dataset will be unzipped and installed.
 The run_analysis.R script will also be located and run from here.
 
 R script algorithm
-----------------------------
+
 1) set the working directory
-#NOTE: this is necessary to find the files
 
 2) read in test data (has no header info)
 xfile <- "./UCI HAR Dataset/test/X_test.txt"
@@ -56,13 +50,12 @@ hdrfile <- "./UCI HAR Dataset/features.txt"
 16) combine the trimmed 'test' and 'train' datasets into 1 big data set (10299 rows)
 
 
-
-# subset the data to include only the mean() and std() columns
-# NOTE: need to double-up backslash char to use as escape chars (take char as literal)
+subset the data to include only the mean() and std() columns
+NOTE: need to double-up backslash char to use as escape chars (take char as literal)
 
 z1 <- select(zdat, subject, activity, grep("mean\\(\\)|std\\(\\)", names(zdat)))
 
-> names(z1)
+ names(z1)
  [1] "subject"                     "activity"                    "tBodyAcc-mean()-X"          
  [4] "tBodyAcc-mean()-Y"           "tBodyAcc-mean()-Z"           "tBodyAcc-std()-X"           
  [7] "tBodyAcc-std()-Y"            "tBodyAcc-std()-Z"            "tGravityAcc-mean()-X"       
@@ -86,9 +79,8 @@ z1 <- select(zdat, subject, activity, grep("mean\\(\\)|std\\(\\)", names(zdat)))
 [61] "fBodyAccMag-mean()"          "fBodyAccMag-std()"           "fBodyBodyAccJerkMag-mean()" 
 [64] "fBodyBodyAccJerkMag-std()"   "fBodyBodyGyroMag-mean()"     "fBodyBodyGyroMag-std()"     
 [67] "fBodyBodyGyroJerkMag-mean()" "fBodyBodyGyroJerkMag-std()" 
-> 
 
-#step #5 instructions from the course project webpage:
+step #5 instructions from the course project webpage:
 "From the data set in step 4, 
-* create a second, independent tidy data set with: 
-	the average of each variable for each activity and each subject."
+create a second, independent tidy data set with: 
+the average of each variable for each activity and each subject.
