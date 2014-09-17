@@ -1,22 +1,20 @@
-## course tidy data project R code
-#----------------------------------
-# written 09/15/14 by dsnook
+## course project R code
 
 
 prepData <- function(actlist, hdrlist, data) {
   
   # 'data' is a parameter that defines either test or train data
-
+  
   # set the file path
   # concatenate the path and data dir
   path <- paste("./UCI HAR Dataset", data, sep="/") 
-
+  
   # read in data (test or train; has no header info)
   #xfile <- "./UCI HAR Dataset/test/X_test.txt" 
   file <- paste("X_", data, ".txt", sep="")
   xfile <- paste(path, file, sep="/")
   xdat <- read.table(xfile, header=F, sep="", stringsAsFactors=F)
-  
+   
   # read in activity list
   #yfile <- "./UCI HAR Dataset/test/y_test.txt"
   file <- paste("y_", data, ".txt", sep="")
@@ -59,11 +57,12 @@ prepData <- function(actlist, hdrlist, data) {
   
 }
 
+
 # main script starts here
 #==========================
 
 # set the working directory
-# NOTE: this is necessary to find the files
+#NOTE: this is necessary to find the files
 setwd("~/courses/gettingData")
 
 library(dplyr)
@@ -81,11 +80,11 @@ hdr <- read.table(hdrfile, header=F, sep="", stringsAsFactors=F)
 # (this is where the column names are found)
 hdrlist <- hdr$V2
 
-print("*** prepping test data...")
+print("=> prepping test data...")
 z1 <- prepData(actlist, hdrlist, data="test")
 #names(z1)
 
-print("*** now prepping train data...")
+print("=> prepping train data...")
 z2 <- prepData(actlist, hdrlist, data="train")
 #names(z2)
 
@@ -95,6 +94,19 @@ d <- dim(z12)
 print("z12 dimensions: ")
 print(d)
 
-print("removing z1 & z2 datasets...")
+print("removing individual test and train datasets...")
 rm(z1)
 rm(z2)
+
+print("performing step #5...")
+df <- data.frame(z12) #make copy of combo dataset
+# didn't update df after performing manipulations...why?
+#df %>% group_by(subject) %>% summarise_each(funs(mean))
+
+df <- group_by(df, subject, activity)
+df <- summarise_each(df, funs(mean))
+print("new 'condensed' data set dimensions:")
+dim(df)
+
+#write out the new data frame to a file
+write.table(df,"./projectTidyData.txt", row.name=FALSE)
