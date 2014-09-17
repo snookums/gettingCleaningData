@@ -12,34 +12,29 @@ R script algorithm
 --------------------
 1) set the working directory
 
-2) read in test data (has no header info)
-xfile <- "./UCI HAR Dataset/test/X_test.txt"
+2) read in test data file (has no header info)
 
-3) read in activity list
-yfile <- "./UCI HAR Dataset/test/y_test.txt"
+3) read in activity list file
 
-4) read in subject file (ID the test subject)
-subfile <- "./UCI HAR Dataset/test/subject_test.txt"
+4) read in subject file (ID the test subjects)
 
-5) read in activity labels file (will be used to ID user activity)
-actfile <- "./UCI HAR Dataset/activity_labels.txt"
+5) read in activity labels file (ID the user activity)
 
 6) make a list of the 2nd column of actfile; there is only 6 values
 
-7) read in header data (will be column names for data set)
-hdrfile <- "./UCI HAR Dataset/features.txt"
+7) read in header data file (will be column names for data set)
 
 8) make a list of the 2nd column of hdrfile
 
 9) change column names that ID the actual data measurement name
 
-10) add column of user activity as 1st column of zdat data set using cbind()
+10) add column of user activity as 1st column of new data set using cbind()
 
 11) make V1 column a factor and change V1 column name to 'activity'
 
 12) assign activity labels to each of the 6 possible factors
 
-13) add another column of user activity as 1st column of new data set
+13) add another column of subject as 1st column of new data set
 
 14) change V1 column name to 'subject'
 
@@ -47,13 +42,10 @@ hdrfile <- "./UCI HAR Dataset/features.txt"
 
 16) repeat steps 2-15 for 'train' data (changing the files in steps 2-4)
 
-16) combine the trimmed 'test' and 'train' datasets into 1 big data set (10299 rows)
+17) combine the trimmed 'test' and 'train' datasets into 1 big data set (10299 rows)
 
+18) subset the data to extract only the mean() and std() data columns
 
-subset the data to include only the mean() and std() columns
-NOTE: need to double-up backslash char to use as escape chars (take char as literal)
-
-z1 <- select(zdat, subject, activity, grep("mean\\(\\)|std\\(\\)", names(zdat)))
 
 < names(z1)
 
@@ -81,7 +73,6 @@ z1 <- select(zdat, subject, activity, grep("mean\\(\\)|std\\(\\)", names(zdat)))
 [64] "fBodyBodyAccJerkMag-std()"   "fBodyBodyGyroMag-mean()"     "fBodyBodyGyroMag-std()"     
 [67] "fBodyBodyGyroJerkMag-mean()" "fBodyBodyGyroJerkMag-std()" 
 
-step #5 instructions from the course project webpage:
-"From the data set in step 4, 
-create a second, independent tidy data set with: 
-the average of each variable for each activity and each subject.
+19) create another independent data set that contains the mean of each feature for each subject performing each activity
+
+20) write out the resultant data table to a file (projectTidyData.txt)
