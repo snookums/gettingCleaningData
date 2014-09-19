@@ -9,44 +9,40 @@ Set the working directory here.
 
 R script algorithm
 --------------------
-1) set the working directory
 
-2) read in test data file (has no header info)
+1) read in raw test data file (X_*.txt - no header info)
 
-3) read in activity list file
+2) read in activity data file (y_*.txt - 6 possible activities)
 
-4) read in subject file (ID the test subjects)
+3) read in subject data file (subject_*.txt - subject #)
 
-5) read in activity labels file (ID the user activity)
+4) read in activity label file (activity_labels.txt - 6 labels)
 
-6) make a list of the 2nd column of actfile; there is only 6 values
+5) read in features data file (features.txt - will become the headers for the new tidy data set)
 
-7) read in header data file (will be column names for data set)
+6) make lists of the activity labels and feature data files
 
-8) make a list of the 2nd column of hdrfile
+7) change column names that ID the actual data measurement name using features list
 
-9) change column names that ID the actual data measurement name with hdrfile list
+8) add column of user activity as 1st column of new data set using cbind()
 
-10) add column of user activity as 1st column of new data set using cbind()
+9) make 1st column a factor and change V1 column name to 'activity'
 
-11) make 1st column a factor and change V1 column name to 'activity'
+10) assign activity labels to each of the 6 possible factors using activity label list
 
-12) assign activity labels to each of the 6 possible factors
+11) add another column of subject as 1st column of new data set
 
-13) add another column of subject as 1st column of new data set
+12) change V1 column name to 'subject'
 
-14) change V1 column name to 'subject'
+13) extract only the mean() and std() data columns from this data (keeping the 'subject' and 'activity' columns too)
 
-15) extract only the mean() and std() data columns from this data (keeping the 'subject' and 'activity' columns too)
+14) repeat steps 1-13 for 'train' data (changing the filepath in steps 1-3)
 
-16) repeat steps 2-15 for 'train' data (changing the files in steps 2-4)
+15) combine the trimmed 'test' and 'train' datasets into 1 big data set (10299 rows)
 
-17) combine the trimmed 'test' and 'train' datasets into 1 big data set (10299 rows)
+16) subset the data to extract only the mean() and std() data columns
 
-18) subset the data to extract only the mean() and std() data columns
-
-
-< names(z1)
+< names(testDat)
 
  [1] "subject"                     "activity"                    "tBodyAcc-mean()-X"          
  [4] "tBodyAcc-mean()-Y"           "tBodyAcc-mean()-Z"           "tBodyAcc-std()-X"           
@@ -72,6 +68,6 @@ R script algorithm
 [64] "fBodyBodyAccJerkMag-std()"   "fBodyBodyGyroMag-mean()"     "fBodyBodyGyroMag-std()"     
 [67] "fBodyBodyGyroJerkMag-mean()" "fBodyBodyGyroJerkMag-std()" 
 
-19) create another independent data set that contains the mean of each feature for each subject performing each activity
+17) create another independent data set that contains the mean of each feature for each subject performing each activity
 
-20) write out the resultant data table to a file (projectTidyData.txt)
+18) write out the resultant data table to a file (projectTidyData.txt)
