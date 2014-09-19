@@ -1,12 +1,11 @@
-This file explains the run_analysis.R script used to generate the desired tidy data set
+This file explains the run_analysis.R script used to generate the desired tidy data set.
+The raw data set can be downloaded from this link:
 
-To run the script, a user must have or create a specific directory structure at this location:
+https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip 
 
-~/courses/gettingData
+To run the script, the UCI HAR dataset must be be unzipped and installed in the same directory with the R script.
+Set the working directory here.
 
-Here, the UCI HAR Dataset will be unzipped and installed.
-
-The run_analysis.R script will also be located and run from here.
 
 R script algorithm
 --------------------
@@ -26,11 +25,11 @@ R script algorithm
 
 8) make a list of the 2nd column of hdrfile
 
-9) change column names that ID the actual data measurement name
+9) change column names that ID the actual data measurement name with hdrfile list
 
 10) add column of user activity as 1st column of new data set using cbind()
 
-11) make V1 column a factor and change V1 column name to 'activity'
+11) make 1st column a factor and change V1 column name to 'activity'
 
 12) assign activity labels to each of the 6 possible factors
 
