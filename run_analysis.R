@@ -77,32 +77,33 @@ hdr <- read.table(hdrfile, header=F, sep="", stringsAsFactors=F)
 hdrlist <- hdr$V2
 
 print("=> prepping test data...")
-z1 <- prepData(actlist, hdrlist, data="test")
+testDat <- prepData(actlist, hdrlist, data="test")
 #names(z1)
 
 print("=> prepping train data...")
-z2 <- prepData(actlist, hdrlist, data="train")
+trainDat <- prepData(actlist, hdrlist, data="train")
 #names(z2)
 
 # combine both test and train data sets into one big data set
-z12 <- rbind(z1, z2)
-d <- dim(z12)
+bigDat <- rbind(test, train)
+d <- dim(bigDat)
 print("z12 dimensions: ")
 print(d)
 
 print("removing individual test and train datasets...")
-rm(z1)
-rm(z2)
+rm(testDat)
+rm(trainDat)
 
 print("performing step #5...")
-df <- data.frame(z12) #make copy of combo dataset
+df <- data.frame(bigDat) #make copy of combo dataset
 # didn't update df after performing manipulations...why?
 #df %>% group_by(subject) %>% summarise_each(funs(mean))
 
 df <- group_by(df, subject, activity)
 df <- summarise_each(df, funs(mean))
 print("new 'condensed' data set dimensions:")
-dim(df)
+x <- dim(df)
+print(x)
 
 #write out the new data frame to a file
 write.table(df,"./projectTidyData.txt", row.name=FALSE)
