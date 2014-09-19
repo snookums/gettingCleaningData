@@ -61,10 +61,6 @@ prepData <- function(actlist, hdrlist, data) {
 # main script starts here
 #==========================
 
-# set the working directory
-#NOTE: this is necessary to find the files
-setwd("~/courses/gettingData")
-
 library(dplyr)
 
 # read in activity labels file (will be used to ID user activity)
