@@ -87,7 +87,7 @@ trainDat <- prepData(actlist, hdrlist, data="train")
 # combine both test and train data sets into one big data set
 bigDat <- rbind(test, train)
 d <- dim(bigDat)
-print("z12 dimensions: ")
+print("new combo dataset dimensions:")
 print(d)
 
 print("removing individual test and train datasets...")
@@ -101,7 +101,7 @@ df <- data.frame(bigDat) #make copy of combo dataset
 
 df <- group_by(df, subject, activity)
 df <- summarise_each(df, funs(mean))
-print("new 'condensed' data set dimensions:")
+print("new 'condensed' dataset dimensions:")
 x <- dim(df)
 print(x)
 
