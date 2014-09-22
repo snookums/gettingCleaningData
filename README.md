@@ -40,7 +40,6 @@ R script algorithm
 
 15) combine the trimmed 'test' and 'train' datasets into 1 big data set (10299 rows)
 
-16) subset the data to extract only the mean() and std() data columns
 
 < names(testDat)
 
@@ -68,6 +67,6 @@ R script algorithm
 [64] "fBodyBodyAccJerkMag-std()"   "fBodyBodyGyroMag-mean()"     "fBodyBodyGyroMag-std()"     
 [67] "fBodyBodyGyroJerkMag-mean()" "fBodyBodyGyroJerkMag-std()" 
 
-17) create another independent data set that contains the mean of each feature for each subject performing each activity
+16) create another independent data set that contains the mean of each feature for each subject performing each activity
 
-18) write out the resultant data table to a file (projectTidyData.txt)
+17) write out the resultant data table to a file (projectTidyData.txt)
